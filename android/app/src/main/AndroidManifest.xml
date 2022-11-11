@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.fifa_world_cup">
+    package="com.thejorabek.fifa_world_cup">
    <application
         android:label="fifa_world_cup"
         android:name="${applicationName}"
