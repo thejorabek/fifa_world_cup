@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "119627215192",
+    "project_id": "fifa-world-cup-1a8d5",
+    "storage_bucket": "fifa-world-cup-1a8d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119627215192:android:c13a46fd90cd9b0c51b52d",
+        "android_client_info": {
+          "package_name": "com.thejorabek.fifa_world_cup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119627215192-7kttqnn3nn1omto83e4nrbnd6hnfmn8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9RTehVEbaW-ePBC1CLmzJ2_bk2FM2PXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119627215192-7kttqnn3nn1omto83e4nrbnd6hnfmn8i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
