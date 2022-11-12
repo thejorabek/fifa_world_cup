@@ -31,15 +31,15 @@ class _GroupsPageState extends State<GroupsPage> {
           SizedBox(height: height * .05),
           Container(
             width: width * .9,
-            height: height * .25,
+            height: height * .274,
             decoration: BoxDecoration(color: MyColors.secondColor, borderRadius: BorderRadius.circular(20)),
             child: Padding(
-              padding: const EdgeInsets.all(15),
+              padding: EdgeInsets.symmetric(vertical: height * .015, horizontal: width * .015),
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Row(
                   children: [
                     Text(
-                      'Country                           W     D     L      P',
+                      '   Group A                          W     D     L      P',
                       style: MyFonts.poppinsRegular.copyWith(fontSize: 18, color: Colors.white),
                     ),
                   ],
@@ -48,27 +48,104 @@ class _GroupsPageState extends State<GroupsPage> {
                   height: height * .03,
                   color: Colors.grey[700],
                   thickness: width * .002,
-                  endIndent: width * .01,
+                  endIndent: width * .011,
                   indent: width * .01,
                 ),
                 Row(
                   children: [
+                    SizedBox(width: width * .01),
                     Container(
-                      height: height * .04,
+                        height: height * .037,
+                        width: width * .01,
+                        decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(5))),
+                    SizedBox(width: width * .02),
+                    Container(
+                      height: height * .037,
                       width: width * .12,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.amber),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                      child: SvgPicture.asset(
+                        'assets/svg/flags/qatar.svg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     SizedBox(width: width * .02),
                     Text(
-                      'Korea Republic',
+                      'Qatar',
                       style: MyFonts.poppinsRegular.copyWith(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
                     ),
-                    Text('2',style: TextStyle(),),
-                    Text('2'),
-                    Text('2'),
-                    Text('2'),
                   ],
-                )
+                ),
+                SizedBox(height: height * .005),
+                Container(width: width * .86, height: height * .001, color: Color.fromARGB(255, 57, 57, 57)),
+                SizedBox(height: height * .005),
+                Row(
+                  children: [
+                    SizedBox(width: width * .01),
+                    Container(
+                        height: height * .037,
+                        width: width * .01,
+                        decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(5))),
+                    SizedBox(width: width * .02),
+                    Container(
+                      height: height * .037,
+                      width: width * .12,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                      child: SvgPicture.asset(
+                        'assets/svg/flags/ecuador.svg',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(width: width * .02),
+                    Text(
+                      'Ecuador',
+                      style: MyFonts.poppinsRegular.copyWith(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+                SizedBox(height: height * .005),
+                Container(width: width * .86, height: height * .001, color: Color.fromARGB(255, 57, 57, 57)),
+                SizedBox(height: height * .005),
+                Row(
+                  children: [
+                    SizedBox(width: width * .04),
+                    Container(
+                      height: height * .037,
+                      width: width * .12,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                      child: SvgPicture.asset(
+                        'assets/svg/flags/netherlands.svg',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(width: width * .02),
+                    Text(
+                      'Netherlands',
+                      style: MyFonts.poppinsRegular.copyWith(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+                SizedBox(height: height * .005),
+                Container(width: width * .86, height: height * .001, color: Color.fromARGB(255, 57, 57, 57)),
+                SizedBox(height: height * .005),
+                Row(
+                  children: [
+                    SizedBox(width: width * .04),
+                    Container(
+                      height: height * .037,
+                      width: width * .12,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                      child: SvgPicture.asset(
+                        'assets/svg/flags/senegal.svg',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(width: width * .02),
+                    Text(
+                      'Senegal',
+                      style: MyFonts.poppinsRegular.copyWith(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
               ]),
             ),
           )
