@@ -1,5 +1,8 @@
+import 'package:fifa_world_cup/models/groups_model.dart';
+import 'package:fifa_world_cup/services/firebase_service.dart';
 import 'package:fifa_world_cup/utils/constants/colors.dart';
 import 'package:fifa_world_cup/utils/constants/fonts.dart';
+import 'package:fifa_world_cup/widgets/groups_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -27,129 +30,35 @@ class _GroupsPageState extends State<GroupsPage> {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: width * .05),
-        child: Column(children: [
-          SizedBox(height: height * .05),
-          Container(
-            width: width * .9,
-            height: height * .274,
-            decoration: BoxDecoration(color: MyColors.secondColor, borderRadius: BorderRadius.circular(20)),
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: height * .015, horizontal: width * .015),
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Row(
-                  children: [
-                    Text(
-                      '   Group A                          W     D     L      P',
-                      style: MyFonts.poppinsRegular.copyWith(fontSize: 18, color: Colors.white),
-                    ),
-                  ],
-                ),
-                Divider(
-                  height: height * .03,
-                  color: Colors.grey[700],
-                  thickness: width * .002,
-                  endIndent: width * .011,
-                  indent: width * .01,
-                ),
-                Row(
-                  children: [
-                    SizedBox(width: width * .01),
-                    Container(
-                        height: height * .037,
-                        width: width * .01,
-                        decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(5))),
-                    SizedBox(width: width * .02),
-                    Container(
-                      height: height * .037,
-                      width: width * .12,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                      child: SvgPicture.asset(
-                        'assets/svg/flags/qatar.svg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(width: width * .02),
-                    Text(
-                      'Qatar',
-                      style: MyFonts.poppinsRegular.copyWith(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
-                SizedBox(height: height * .005),
-                Container(width: width * .86, height: height * .001, color: Color.fromARGB(255, 57, 57, 57)),
-                SizedBox(height: height * .005),
-                Row(
-                  children: [
-                    SizedBox(width: width * .01),
-                    Container(
-                        height: height * .037,
-                        width: width * .01,
-                        decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(5))),
-                    SizedBox(width: width * .02),
-                    Container(
-                      height: height * .037,
-                      width: width * .12,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                      child: SvgPicture.asset(
-                        'assets/svg/flags/ecuador.svg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(width: width * .02),
-                    Text(
-                      'Ecuador',
-                      style: MyFonts.poppinsRegular.copyWith(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
-                SizedBox(height: height * .005),
-                Container(width: width * .86, height: height * .001, color: Color.fromARGB(255, 57, 57, 57)),
-                SizedBox(height: height * .005),
-                Row(
-                  children: [
-                    SizedBox(width: width * .04),
-                    Container(
-                      height: height * .037,
-                      width: width * .12,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                      child: SvgPicture.asset(
-                        'assets/svg/flags/netherlands.svg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(width: width * .02),
-                    Text(
-                      'Netherlands',
-                      style: MyFonts.poppinsRegular.copyWith(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
-                SizedBox(height: height * .005),
-                Container(width: width * .86, height: height * .001, color: Color.fromARGB(255, 57, 57, 57)),
-                SizedBox(height: height * .005),
-                Row(
-                  children: [
-                    SizedBox(width: width * .04),
-                    Container(
-                      height: height * .037,
-                      width: width * .12,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                      child: SvgPicture.asset(
-                        'assets/svg/flags/senegal.svg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(width: width * .02),
-                    Text(
-                      'Senegal',
-                      style: MyFonts.poppinsRegular.copyWith(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
-              ]),
-            ),
-          )
-        ]),
+        child: StreamBuilder<List<GroupsModel>>(
+            stream: readGroups(),
+            builder: (context, AsyncSnapshot<List<GroupsModel>> snapshot) {
+              if (!snapshot.hasData) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                  ),
+                );
+              } else if (snapshot.hasError) {
+                return const Center(
+                  child: Text('No internet'),
+                );
+              } else {
+                final groups = snapshot.data!;
+                print(groups);
+                return ListView.builder(
+                    itemCount: groups.length,
+                    itemBuilder: (context, index) {
+                      return GroupsItem(
+                          width: width,
+                          height: height,
+                          bir: groups[index].bir.toString(),
+                          ikki: groups[index].ikki.toString(),
+                          uch: groups[index].uch.toString(),
+                          tort: groups[index].tort.toString());
+                    });
+              }
+            }),
       ),
     );
   }
